@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal of Multidisciplinary Research and Literacy</title>
+    <style>
+        body {
+            background-color: #A8C0B5;
+        }
+
+        nav {
+            background-color: #687D73;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white; 
+            padding: 10px 15px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #5a6b5c; 
+        }
+
+        #manuscriptGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .manuscript-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Journal of Multidisciplinary Research and Literacy (JMRL)</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="showcase.html">Manuscript Showcase</a>
+            <a href="submission.html">Submission Requirements</a>
+            <a href="team.html">Our Team</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <select id="searchCategory">
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="abstract">Abstract</option>
+            <option value="keywords">Keywords</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Search" onkeyup="searchManuscripts()">
+        
+        <div id="manuscriptGrid">
+            <div class="manuscript-item">
+                <h3>A Scientific Study of [Insert]</h3>
+                <p class="author">Author: Patsy Keys</p>
+                <p class="abstract">Abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit, elit sed sollicitudin placerat, nulla turpis ultrices mi, sed scelerisque eros dui in leo. Morbi ante metus, varius ac dui placerat, luctus aliquam massa. Cras lorem turpis, porttitor eget dapibus eget, maximus eu metus. Ut consectetur vel lectus id iaculis. Suspendisse tincidunt leo libero, sodales tristique massa facilisis ut. Praesent efficitur sem lorem, vitae molestie arcu auctor a. Cras vel purus dolor.</p>
+                <p class="keywords">Keywords: keyword1, keyword2</p>
+                <a href="JMRL documents/sample.pdf" download>Download PDF</a>
+            </div> 
+            <div class="manuscript-item">
+                <h3>A Literature Review of Literacy</h3>
+                <p class="author">Author: John Doe</p>
+                <p class="abstract">Abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit, elit sed sollicitudin placerat, nulla turpis ultrices mi, sed scelerisque eros dui in leo. Morbi ante metus, varius ac dui placerat, luctus aliquam massa. Cras lorem turpis, porttitor eget dapibus eget, maximus eu metus. Ut consectetur vel lectus id iaculis. Suspendisse tincidunt leo libero, sodales tristique massa facilisis ut. Praesent efficitur sem lorem, vitae molestie arcu auctor a. Cras vel purus dolor.</p>
+                <p class="keywords">Keywords: keyword3, keyword4</p>
+                <a href="JMRL documents/sample.pdf" download>Download PDF</a>
+            </div>  
+            <div class="manuscript-item">
+                <h3>A Meta-Analysis of [Insert]</h3>
+                <p class="author">Author: Jane Smith</p>
+                <p class="abstract">Abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit, elit sed sollicitudin placerat, nulla turpis ultrices mi, sed scelerisque eros dui in leo. Morbi ante metus, varius ac dui placerat, luctus aliquam massa. Cras lorem turpis, porttitor eget dapibus eget, maximus eu metus. Ut consectetur vel lectus id iaculis. Suspendisse tincidunt leo libero, sodales tristique massa facilisis ut. Praesent efficitur sem lorem, vitae molestie arcu auctor a. Cras vel purus dolor.</p>
+                <p class="keywords">Keywords: keyword3, keyword6</p>
+                <a href="JMRL documents/sample.pdf" download>Download PDF</a>
+            </div>  
+            <div class="manuscript-item">
+                <h3>An Investigation of Literacy</h3>
+                <p class="author">Author: Willy Wonka</p>
+                <p class="abstract">Abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit, elit sed sollicitudin placerat, nulla turpis ultrices mi, sed scelerisque eros dui in leo. Morbi ante metus, varius ac dui placerat, luctus aliquam massa. Cras lorem turpis, porttitor eget dapibus eget, maximus eu metus. Ut consectetur vel lectus id iaculis. Suspendisse tincidunt leo libero, sodales tristique massa facilisis ut. Praesent efficitur sem lorem, vitae molestie arcu auctor a. Cras vel purus dolor.</p>
+                <p class="keywords">Keywords: keyword7, keyword1</p>
+                <a href="JMRL documents/sample.pdf" download>Download PDF</a>
+            </div>            
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Journal of Multidisciplinary Research and Literacy</p>
+    </footer>
+
+    <script>
+        function searchManuscripts() {
+            var input, filter, grid, items, selectedCategory, i, textToSearch, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            grid = document.getElementById('manuscriptGrid');
+            items = grid.getElementsByClassName('manuscript-item');
+            selectedCategory = document.getElementById('searchCategory').value;
+
+            for (i = 0; i < items.length; i++) {
+                if (selectedCategory === "title") {
+                    textToSearch = items[i].getElementsByTagName("h3")[0];
+                } else if (selectedCategory === "author") {
+                    textToSearch = items[i].querySelector(".author");
+                } else if (selectedCategory === "abstract") {
+                    textToSearch = items[i].querySelector(".abstract");
+                } else if (selectedCategory === "keywords") {
+                    textToSearch = items[i].querySelector(".keywords");
+                }
+
+                txtValue = textToSearch.textContent || textToSearch.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
